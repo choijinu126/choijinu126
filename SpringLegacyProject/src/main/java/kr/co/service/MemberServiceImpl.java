@@ -15,7 +15,27 @@ public class MemberServiceImpl implements MemberService {
 	private MemberDAO mdao;
 
 	@Override
-	public List<MemberVO> hlist() {
-		return mdao.hlist();
+	public List<MemberVO> list() {
+		return mdao.list();
+	}
+
+	@Override
+	public void insert(MemberVO vo) {
+		mdao.insert(vo);
+	}
+
+	@Override
+	public MemberVO read(String id) {
+		return mdao.read(id);
+	}
+
+	@Override
+	public void update(MemberVO vo) {
+		mdao.update(vo);
+	}
+
+	@Override
+	public void delete(String id) {
+		mdao.delete(id);
 	}
 }

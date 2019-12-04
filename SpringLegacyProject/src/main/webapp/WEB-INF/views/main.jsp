@@ -13,6 +13,37 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class='container-fluid'>
+	<h2>CRUD test main  page</h2>
+	<button type="button" class="btn btn-secondary col-xs-1 col-xs-push-1">menu1</button>
+	<button type="button" class="btn btn-secondary col-xs-1 col-xs-push-1" style="margin-left: 5px">menu2</button>
+</div>
+
+<div class='container'>
+	<h4>test table</h4>
+	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col">#</th>
+				<th scope="col">id</th>
+				<th scope="col">name</th>
+				<th scope="col">number</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${vo}" var="vo" varStatus="stat">
+				<tr>
+					<th scope="row">${stat.count}</th>
+					<td><a href="/read?id=${vo.id}">${vo.id}</a></td>
+					<td>${vo.name}</td>
+					<td>${vo.num}</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+	
+	<a id="createbtn" href="/insertUI" class="btn btn-success" style="float: right;">create</a>
+</div>
 
 </body>
 </html>

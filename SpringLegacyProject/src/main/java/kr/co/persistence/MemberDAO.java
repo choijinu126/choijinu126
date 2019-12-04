@@ -6,6 +6,14 @@ import kr.co.domain.MemberVO;
 
 public interface MemberDAO {
 
-	List<MemberVO> hlist();
+	List<MemberVO> list();
+
+	void insert(MemberVO vo);
+
+	MemberVO read(String id);
+
+	void update(MemberVO vo);
+
+	void delete(String id);
 	
 }

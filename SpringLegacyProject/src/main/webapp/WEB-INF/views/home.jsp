@@ -11,7 +11,7 @@
 
 <P>Please click the follow link.</P>
 <br/>
-<a href="#">link</a>
+<a href="/main">link</a>
 
 </body>
 </html>

@@ -7,203 +7,57 @@ public class MemberVO implements Serializable{
 
 	//health_persinfo table
 	private String id;
-	private String pw;
 	private String name;
-	private String phone;
-	private String joindate;
-	private String locker;
-	private String shirts;
-	
-	//health_healinfo table
-	private int pk_num;
-//	private String id;    health_persinfo foreign key
-	private int weight;
-	private int height;
-	private String pt;
-	private String updatedate;
-	
+	private String num;
+	private String pw;
 	
 	public MemberVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	//all attr constructor
-	public MemberVO(String id, String pw, String name, String phone, String joindate, String locker, String shirts,
-			int pk_num, int weight, int height, String pt, String updatedate) {
+	public MemberVO(String id, String name, String num, String pw) {
 		super();
 		this.id = id;
-		this.pw = pw;
 		this.name = name;
-		this.phone = phone;
-		this.joindate = joindate;
-		this.locker = locker;
-		this.shirts = shirts;
-		this.pk_num = pk_num;
-		this.weight = weight;
-		this.height = height;
-		this.pt = pt;
-		this.updatedate = updatedate;
-	}
-
-	
-	//health_persinfo attr constructor
-	public MemberVO(String id, String pw, String name, String phone, String joindate, String locker, String shirts) {
-		super();
-		this.id = id;
+		this.num = num;
 		this.pw = pw;
-		this.name = name;
-		this.phone = phone;
-		this.joindate = joindate;
-		this.locker = locker;
-		this.shirts = shirts;
 	}
-
-	
-	//health_healinfo attr constructor
-	public MemberVO(int pk_num, String id, int weight, int height, String pt, String updatedate) {
-		super();
-		this.id = id;
-		this.pk_num = pk_num;
-		this.weight = weight;
-		this.height = height;
-		this.pt = pt;
-		this.updatedate = updatedate;
-	}
-
 
 	public String getId() {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
-
-	public String getPw() {
-		return pw;
-	}
-
-
-	public void setPw(String pw) {
-		this.pw = pw;
-	}
-
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
-	public String getPhone() {
-		return phone;
+	public String getNum() {
+		return num;
 	}
 
-
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setNum(String num) {
+		this.num = num;
 	}
 
-
-	public String getJoindate() {
-		return joindate;
+	public String getPw() {
+		return pw;
 	}
 
-
-	public void setJoindate(String joindate) {
-		this.joindate = joindate;
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
-
-
-	public String getLocker() {
-		return locker;
-	}
-
-
-	public void setLocker(String locker) {
-		this.locker = locker;
-	}
-
-
-	public String getShirts() {
-		return shirts;
-	}
-
-
-	public void setShirts(String shirts) {
-		this.shirts = shirts;
-	}
-
-
-	public int getPk_num() {
-		return pk_num;
-	}
-
-
-	public void setPk_num(int pk_num) {
-		this.pk_num = pk_num;
-	}
-
-
-	public int getWeight() {
-		return weight;
-	}
-
-
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
-
-
-	public int getHeight() {
-		return height;
-	}
-
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-
-	public String getPt() {
-		return pt;
-	}
-
-
-	public void setPt(String pt) {
-		this.pt = pt;
-	}
-
-
-	public String getUpdatedate() {
-		return updatedate;
-	}
-
-
-	public void setUpdatedate(String updatedate) {
-		this.updatedate = updatedate;
-	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-
-	@Override
-	public String toString() {
-		return "MemberVO [id=" + id + ", pw=" + pw + ", name=" + name + ", phone=" + phone + ", joindate=" + joindate
-				+ ", locker=" + locker + ", shirts=" + shirts + ", pk_num=" + pk_num + ", weight=" + weight
-				+ ", height=" + height + ", pt=" + pt + ", updatedate=" + updatedate + "]";
-	}
-
 
 	@Override
 	public int hashCode() {
@@ -212,7 +66,6 @@ public class MemberVO implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -229,5 +82,10 @@ public class MemberVO implements Serializable{
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberVO [id=" + id + ", name=" + name + ", num=" + num + "]";
 	}
 }
