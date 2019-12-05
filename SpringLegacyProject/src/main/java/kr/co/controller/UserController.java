@@ -13,7 +13,7 @@ import kr.co.domain.MemberVO;
 import kr.co.service.loginService;
 
 @Controller
-public class LoginController {
+public class UserController {
 	@Inject
 	private loginService lservice;
 	
