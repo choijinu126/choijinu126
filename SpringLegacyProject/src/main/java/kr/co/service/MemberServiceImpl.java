@@ -19,7 +19,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<MemberVO> list(spageTO sto) {
-		sto.setAmount(mdao.amountcall());
+		sto.setAmount(mdao.amountcall(sto));
 		return mdao.list(sto);
 	}
 

@@ -31,7 +31,15 @@
 	</select>
 	
 	<select id="amountcall" resultType="Integer">
-		<![CDATA[select count(*) from member_test ]]><include refid="search"></include>
+		<![CDATA[
+		select count(*) from 
+	    	(
+	    	select rownum rnum, id, name, num from 
+	        	(
+				select * from member_test ]]><include refid="search"></include><![CDATA[ order by id
+				)
+    		)
+		]]> 
 	</select>
 	
 	<insert id="insert">

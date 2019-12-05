@@ -17,6 +17,6 @@ public interface MemberDAO {
 
 	void delete(String id);
 
-	int amountcall();
+	int amountcall(spageTO sto);
 	
 }

@@ -18,9 +18,34 @@
 	<button type="button" class="btn btn-secondary col-xs-1 col-xs-push-1">menu1</button>
 	<button type="button" class="btn btn-secondary col-xs-1 col-xs-push-1" style="margin-left: 5px">menu2</button>
 </div>
+<hr/>
 
+<!-- listing -->
 <div class='container'>
 	<h4>test table</h4>
+	
+	<!-- search -->
+	<form action="/main" method="get">
+		<div class="input-group">
+			<span class="input-group-addon">
+				<select id="searchSel" name="searchType">
+						<option disabled>검색 기준</option>
+						<option value="id" selected="selected">id</option>
+						<option value="name">이름</option>
+						<option value="num">번호</option>
+				</select>
+			</span>
+			
+			<span class="input-group-text">
+				<input type="text" class="form-control from-control-sm" id="keyword" style="width: 400px;" name="keyword">
+			</span>
+	
+			<span class="input-group-append">
+				<input type="submit" class="btn btn-primary" value="Submit">
+			</span>
+		</div>
+	</form>
+	
 	<table class="table">
 		<thead>
 			<tr>
@@ -46,8 +71,8 @@
 </div>
 
 
-<!-- 게임 리스트 페이징 파트 -->
-<div class="row text-center" style="text-align: center; position: relative; left: 45%; width: 500px;">
+<!-- paging -->
+<div class="row text-center" style="text-align: center;">
 	<ul class="pagination">
 		<c:if test="${vo.curPage>1}">
 			<li>

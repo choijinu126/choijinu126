@@ -42,7 +42,7 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public int amountcall() {
-		return msession.selectOne(NS+".amountcall");
+	public int amountcall(spageTO sto) {
+		return msession.selectOne(NS+".amountcall", sto);
 	}
 }
