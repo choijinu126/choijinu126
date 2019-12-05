@@ -4,8 +4,34 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="kr.co.mapper.member">
+	<sql id="search">
+		<if test="searchType == 'id'.toString()">
+			where lower(id) like '%'||lower(#{keyword})||'%'
+		</if>
+		<if test="searchType == 'name'.toString()">
+			where lower(name) like '%'||lower(#{keyword})||'%'
+		</if>
+		<if test="searchType == 'num'.toString()">
+			where lower(num) like '%'||lower(#{keyword})||'%'
+		</if>
+		<if test="searchType == null">
+		</if>
+	</sql>
+
 	<select id="list" resultType="kr.co.domain.MemberVO">
-		select * from member_test
+		<![CDATA[
+		select * from 
+	    	(
+	    	select rownum rnum, id, name, num from 
+	        	(
+				select * from member_test ]]><include refid="search"></include><![CDATA[ order by id
+				)
+    		)
+		where rnum between #{startNum} and #{endNum}]]>
+	</select>
+	
+	<select id="amountcall" resultType="Integer">
+		<![CDATA[select count(*) from member_test ]]><include refid="search"></include>
 	</select>
 	
 	<insert id="insert">

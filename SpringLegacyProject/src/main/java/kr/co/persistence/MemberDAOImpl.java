@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.spageTO;
 
 @Repository
 public class MemberDAOImpl implements MemberDAO {
@@ -16,8 +17,8 @@ public class MemberDAOImpl implements MemberDAO {
 	private final String NS = "kr.co.mapper.member";
 
 	@Override
-	public List<MemberVO> list() {
-		return msession.selectList(NS+".list");
+	public List<MemberVO> list(spageTO sto) {
+		return msession.selectList(NS+".list", sto);
 	}
 
 	@Override
@@ -38,5 +39,10 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void delete(String id) {
 		msession.delete(NS+".delete", id);
+	}
+
+	@Override
+	public int amountcall() {
+		return msession.selectOne(NS+".amountcall");
 	}
 }

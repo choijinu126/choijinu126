@@ -3,10 +3,11 @@ package kr.co.persistence;
 import java.util.List;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.spageTO;
 
 public interface MemberDAO {
 
-	List<MemberVO> list();
+	List<MemberVO> list(spageTO sto);
 
 	void insert(MemberVO vo);
 
@@ -15,5 +16,7 @@ public interface MemberDAO {
 	void update(MemberVO vo);
 
 	void delete(String id);
+
+	int amountcall();
 	
 }

@@ -3,10 +3,11 @@ package kr.co.service;
 import java.util.List;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.spageTO;
 
 public interface MemberService {
 
-	List<MemberVO> list();
+	List<MemberVO> list(spageTO sto);
 
 	void insert(MemberVO vo);
 

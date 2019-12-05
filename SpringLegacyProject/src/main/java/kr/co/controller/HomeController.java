@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.domain.MemberVO;
+import kr.co.domain.spageTO;
 import kr.co.service.MemberService;
 
 @Controller
@@ -21,12 +22,13 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		return "home";
+		
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void main(Model model) {
-		List<MemberVO> vo = mservice.list();
-		model.addAttribute("vo", vo);
+	public void main(spageTO sto, Model model) {
+		sto.setList(mservice.list(sto));
+		model.addAttribute("vo", sto);
 	}
 	
 	@RequestMapping(value = "/insertUI", method = RequestMethod.GET)
