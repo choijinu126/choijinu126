@@ -14,10 +14,14 @@
 </head>
 <body>
 <div class='container-fluid'>
-	<h2>CRUD test main  page</h2>
-	<button type="button" class="btn btn-secondary col-xs-1 col-xs-push-1">menu1</button>
-	<button type="button" class="btn btn-secondary col-xs-1 col-xs-push-1" style="margin-left: 5px">menu2</button>
-</div>
+	<h2 style="margin-left: 50px;">CRUD test main  page</h2>
+	
+	<div class="container">
+		<button type="button" class="btn btn-secondary col-xs-1">menu1</button>
+		<button type="button" class="btn btn-secondary col-xs-1" style="margin-left: 5px">menu2</button>
+		
+		<a href="#" class="btn btn-info" style="float: right;">Login</a>
+	</div>
 <hr/>
 
 <!-- listing -->
@@ -67,33 +71,31 @@
 		</tbody>
 	</table>
 	
-	<a id="createbtn" href="/insertUI" class="btn btn-success" style="float: right;">create</a>
+	<!-- paging -->
+	<div class="container row text-center" style="text-align: center;">
+		<ul class="pagination">
+			<c:if test="${vo.curPage>1}">
+				<li>
+					<a href="/main?curPage=${vo.curPage-1}&perPage=${vo.perPage}&searchType=${vo.searchType}&keyword=${vo.keyword}">&laquo;</a>
+				</li>
+			</c:if>
+			<!-- 주소창에서 perPage값을 조절하면서 확인할것 -->
+	
+			<c:forEach begin="${vo.bpn}" end="${vo.spn}" var="idx">
+				<li class="${vo.curPage == idx?'active':''}"><a
+					href="/main?curPage=${idx}&perPage=${vo.perPage}&searchType=${vo.searchType}&keyword=${vo.keyword}">${idx}</a></li>
+				<!-- li에 클래스를 active로 주면 현재 페이지에 색이 들어간다 -->
+			</c:forEach>
+	
+			<c:if test="${vo.curPage<vo.totalPage}">
+				<li><a
+					href="/main?curPage=${vo.curPage+1}&perPage=${vo.perPage}&searchType=${vo.searchType}&keyword=${vo.keyword}">&raquo;</a></li>
+			</c:if>
+		</ul>
+		
+		<a id="createbtn" href="/insertUI" class="btn btn-success" style="float: right;">create</a>
+	</div>
 </div>
-
-
-<!-- paging -->
-<div class="row text-center" style="text-align: center;">
-	<ul class="pagination">
-		<c:if test="${vo.curPage>1}">
-			<li>
-				<a href="/main?curPage=${vo.curPage-1}&perPage=${vo.perPage}&searchType=${vo.searchType}&keyword=${vo.keyword}">&laquo;</a>
-			</li>
-		</c:if>
-		<!-- 주소창에서 perPage값을 조절하면서 확인할것 -->
-
-		<c:forEach begin="${vo.bpn}" end="${vo.spn}" var="idx">
-			<li class="${vo.curPage == idx?'active':''}"><a
-				href="/main?curPage=${idx}&perPage=${vo.perPage}&searchType=${vo.searchType}&keyword=${vo.keyword}">${idx}</a></li>
-			<!-- li에 클래스를 active로 주면 현재 페이지에 색이 들어간다 -->
-		</c:forEach>
-
-		<c:if test="${vo.curPage<vo.totalPage}">
-			<li><a
-				href="/main?curPage=${vo.curPage+1}&perPage=${vo.perPage}&searchType=${vo.searchType}&keyword=${vo.keyword}">&raquo;</a></li>
-		</c:if>
-
-	</ul>
 </div>
-
 </body>
 </html>
