@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,14 +21,17 @@ public class HomeController {
 	private MemberService mservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		return "home";
+	public String home() {
+		return "redirect:/main";
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void main(spageTO sto, Model model) {
+	public void main(spageTO sto, Model model, HttpSession session) {
 		sto.setList(mservice.list(sto));
+		MemberVO login = (MemberVO) session.getAttribute("login");
+		
 		model.addAttribute("vo", sto);
+		model.addAttribute("login", login);
 	}
 	
 	@RequestMapping(value = "/insertUI", method = RequestMethod.GET)

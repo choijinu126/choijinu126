@@ -20,7 +20,14 @@
 		<button type="button" class="btn btn-secondary col-xs-1">menu1</button>
 		<button type="button" class="btn btn-secondary col-xs-1" style="margin-left: 5px">menu2</button>
 		
-		<a href="#" class="btn btn-info" style="float: right;">Login</a>
+		<c:choose>
+			<c:when test="${empty login}">
+				<a href="/loginUI" class="btn btn-info" style="float: right;">Login</a>
+			</c:when>
+			<c:otherwise>
+				<a href="/logout" class="btn btn-info" style="float: right;">Logout</a>
+			</c:otherwise>
+		</c:choose>
 	</div>
 <hr/>
 

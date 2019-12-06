@@ -43,7 +43,7 @@
 	</select>
 	
 	<insert id="insert">
-		insert into member_test values(#{id}, #{name}, #{num}, #{pw})
+		insert into member_test (id, name, num, pw) values(#{id}, #{name}, #{num}, #{pw})
 	</insert>
 	
 	<select id="read" resultType="kr.co.domain.MemberVO">

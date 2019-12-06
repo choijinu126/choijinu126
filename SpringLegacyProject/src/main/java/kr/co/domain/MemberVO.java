@@ -10,17 +10,19 @@ public class MemberVO implements Serializable{
 	private String name;
 	private String num;
 	private String pw;
+	private boolean usecookie;
 	
 	public MemberVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MemberVO(String id, String name, String num, String pw) {
+	public MemberVO(String id, String name, String num, String pw, boolean usecookie) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.num = num;
 		this.pw = pw;
+		this.usecookie = usecookie;
 	}
 
 	public String getId() {
@@ -55,6 +57,14 @@ public class MemberVO implements Serializable{
 		this.pw = pw;
 	}
 
+	public boolean isUsecookie() {
+		return usecookie;
+	}
+
+	public void setUsecookie(boolean usecookie) {
+		this.usecookie = usecookie;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -86,6 +96,7 @@ public class MemberVO implements Serializable{
 
 	@Override
 	public String toString() {
-		return "MemberVO [id=" + id + ", name=" + name + ", num=" + num + "]";
+		return "MemberVO [id=" + id + ", name=" + name + ", num=" + num + ", usecookie=" + usecookie + "]";
 	}
+
 }
