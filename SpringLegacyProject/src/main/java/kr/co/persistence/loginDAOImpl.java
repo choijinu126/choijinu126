@@ -41,4 +41,9 @@ public class loginDAOImpl implements loginDAO{
 		return lsession.selectOne(NS+".checksessionkey", sessionId);
 	}
 
+	@Override
+	public MemberVO checkVoFromCookie(String sessionId) {
+		return lsession.selectOne(NS+".checkVoFromCookie", sessionId);
+	}
+
 }

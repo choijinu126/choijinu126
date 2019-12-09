@@ -1,5 +1,8 @@
 package kr.co.in;
 
+import java.io.PrintWriter;
+import java.util.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -32,9 +35,13 @@ public class LoginIn extends HandlerInterceptorAdapter{
 					session.setAttribute("login", vo);
 					return true;
 				}
+			}else {
+				response.setContentType("text/html;charset=UTF-8");
+				PrintWriter writer = response.getWriter();
+				writer.println("<script>alert('로그인 페이지로 이동합니다.');location.href='/loginUI'</script>");
+				writer.flush();
+				return false;
 			}
-			response.sendRedirect("/loginUI");
-			return false;
 		}
 		return true;
 	}

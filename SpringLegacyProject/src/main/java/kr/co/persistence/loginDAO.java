@@ -14,4 +14,6 @@ public interface loginDAO {
 
 	MemberVO checksessionkey(String sessionId);
 
+	MemberVO checkVoFromCookie(String sessionId);
+
 }

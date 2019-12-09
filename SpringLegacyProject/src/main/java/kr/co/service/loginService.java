@@ -14,4 +14,6 @@ public interface loginService {
 
 	MemberVO checksessionkey(String sessionId);
 
+	MemberVO checkVoFromCookie(String sessionId);
+
 }

@@ -26,9 +26,11 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/**"/>
+			<exclude-mapping path="/"/>
+			<exclude-mapping path="/main"/>
 			<exclude-mapping path="/loginUI"/>
-			<exclude-mapping path="/main/**"/>
 			<exclude-mapping path="/loginAction"/>
+			<exclude-mapping path="/logout"/>
 			<beans:ref bean="loginIn"/>
 		</interceptor>
 	</interceptors>

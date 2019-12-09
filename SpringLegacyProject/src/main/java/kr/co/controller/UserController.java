@@ -34,9 +34,14 @@ public class UserController {
         return result;
     }
 	
+	@RequestMapping("/loginCheck")
+	public String loginCheck(HttpSession session, HttpServletRequest request) {
+		return "redirect:/loginUI";
+	}
+	
 	@RequestMapping("/loginUI")
 	public String loginUI() {
-		return "loginUI";
+		return "/loginUI";
 	}
 	
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)

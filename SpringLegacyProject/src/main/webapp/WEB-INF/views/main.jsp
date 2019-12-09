@@ -22,7 +22,7 @@
 		
 		<c:choose>
 			<c:when test="${empty login}">
-				<a href="/loginUI" class="btn btn-info" style="float: right;">Login</a>
+				<a href="/loginCheck" class="btn btn-info" style="float: right;">Login</a>
 			</c:when>
 			<c:otherwise>
 				<a href="/logout" class="btn btn-info" style="float: right;">Logout</a>

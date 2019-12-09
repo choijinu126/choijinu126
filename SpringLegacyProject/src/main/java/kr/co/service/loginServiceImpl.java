@@ -33,5 +33,10 @@ public class loginServiceImpl implements loginService{
 	public MemberVO checksessionkey(String sessionId) {
 		return ldao.checksessionkey(sessionId);
 	}
+
+	@Override
+	public MemberVO checkVoFromCookie(String sessionId) {
+		return ldao.checkVoFromCookie(sessionId);
+	}
 	
 }

@@ -1,9 +1,12 @@
 package kr.co.controller;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
 import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -14,11 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.domain.MemberVO;
 import kr.co.domain.spageTO;
 import kr.co.service.MemberService;
+import kr.co.service.loginService;
 
 @Controller
 public class HomeController {
 	@Inject
 	private MemberService mservice;
+	@Inject
+	private loginService lservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home() {
@@ -26,9 +32,23 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)
-	public void main(spageTO sto, Model model, HttpSession session) {
+	public void main(spageTO sto, Model model, HttpSession session, HttpServletRequest request) {
 		sto.setList(mservice.list(sto));
 		MemberVO login = (MemberVO) session.getAttribute("login");
+		if(login == null) {
+			Cookie[] cookies = request.getCookies();
+			if(cookies != null) {
+				for(Cookie cookie: cookies) {
+					if(cookie.getName().equalsIgnoreCase("loginCookie")) {
+						MemberVO vo = lservice.checkVoFromCookie(cookie.getValue());
+						 int limitTime = 60*5*1*1;
+						 Date sessionlimit = new Date(System.currentTimeMillis() + (1000*limitTime));
+						 lservice.keepLogin(vo.getId(), cookie.getValue(), sessionlimit);
+						 session.setAttribute("login", vo);
+					}
+				}
+			}
+		}
 		
 		model.addAttribute("vo", sto);
 		model.addAttribute("login", login);
