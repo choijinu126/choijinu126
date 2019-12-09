@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<h2 style="margin-left: 50px;"><a href="/main">CRUD test main  page</a></h2>
+<h2 style="margin-left: 50px;"><a href="/main" style="color: black; text-decoration: none;">CRUD test main  page</a></h2>
 	
 	<div class="container">
 		<a href="#" type="button" class="btn btn-success col-xs-1">게시판</a>
