@@ -14,7 +14,8 @@
 </head>
 <body>
 <div class="container-fluid">
-	<h3>read test page</h3>
+	<%@include file="mainHeader.jsp" %>
+	<h3 style="margin-left: 50px;">read test page</h3>
 	<div class="container">
 			<div class="form-group">
 				<label for="id">id</label>
