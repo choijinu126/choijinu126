@@ -100,7 +100,9 @@
 			</c:if>
 		</ul>
 		
-		<a id="createbtn" href="/insertUI" class="btn btn-success" style="float: right;">create</a>
+		<c:if test="${not empty login}">
+			<a id="createbtn" href="/insertUI" class="btn btn-success" style="float: right;">create</a>
+		</c:if>
 	</div>
 </div>
 </div>
