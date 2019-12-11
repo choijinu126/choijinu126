@@ -8,11 +8,13 @@ public class boardVO {
 	private String writedate;
 	private String content;
 	
+	private int rnum;  //replyVO
+	
 	public boardVO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public boardVO(int bnum, String title, String writer, int readcnt, String writedate, String content) {
+	public boardVO(int bnum, String title, String writer, int readcnt, String writedate, String content, int rnum) {
 		super();
 		this.bnum = bnum;
 		this.title = title;
@@ -20,6 +22,7 @@ public class boardVO {
 		this.readcnt = readcnt;
 		this.writedate = writedate;
 		this.content = content;
+		this.rnum = rnum;
 	}
 
 	public int getBnum() {
@@ -95,7 +98,7 @@ public class boardVO {
 	@Override
 	public String toString() {
 		return "boardVO [bnum=" + bnum + ", title=" + title + ", writer=" + writer + ", readcnt=" + readcnt
-				+ ", writedate=" + writedate + ", content=" + content + "]";
+				+ ", writedate=" + writedate + ", content=" + content + ", rnum=" + rnum + "]";
 	}
-	
+
 }

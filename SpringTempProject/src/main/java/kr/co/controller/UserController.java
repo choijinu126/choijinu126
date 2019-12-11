@@ -1,5 +1,7 @@
 package kr.co.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -45,7 +47,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/loginAction", method = RequestMethod.POST)
-	public String loginAction(MemberVO vo, boolean usecookie, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request) {
+	public String loginAction(MemberVO vo, boolean usecookie, Model model, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
 		String returnURL = "";
 		if(session.getAttribute("login") != null) session.removeAttribute("login");
 		
@@ -67,7 +69,11 @@ public class UserController {
 				lservice.keepLogin(vo.getId(), session.getId(), sessionlimit);
 			}
 		} else {
-			returnURL = "redirect:/loginUI";
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter writer = response.getWriter();
+			writer.println("<script>alert('아아디 또는 비밀번호를 확인해주세요.');</script>");
+			writer.flush();
+			returnURL = "loginUI";
 		}
 		return returnURL;
 	}

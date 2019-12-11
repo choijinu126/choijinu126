@@ -34,6 +34,8 @@
 			<exclude-mapping path="/loginUI"/>
 			<exclude-mapping path="/loginAction"/>
 			<exclude-mapping path="/logout"/>
+			<exclude-mapping path="/insertUI"/>
+			<exclude-mapping path="/insert"/>
 			<beans:ref bean="loginIn"/>
 		</interceptor>
 	</interceptors>
