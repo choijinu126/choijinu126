@@ -55,6 +55,6 @@
 	</update>
 	
 	<delete id="delete">
-		delete from member_test where id=${id}
+		delete from member_test where id=#{id}
 	</delete>
 </mapper>

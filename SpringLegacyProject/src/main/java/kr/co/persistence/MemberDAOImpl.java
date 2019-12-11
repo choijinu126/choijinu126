@@ -38,6 +38,7 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public void delete(String id) {
+		System.out.println(id);
 		msession.delete(NS+".delete", id);
 	}
 
