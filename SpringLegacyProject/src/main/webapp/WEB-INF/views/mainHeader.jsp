@@ -6,7 +6,6 @@
 	
 	<div class="container">
 		<a href="#" type="button" class="btn btn-success col-xs-1">게시판</a>
-		<button type="button" class="btn btn-secondary col-xs-1" style="margin-left: 5px">menu2</button>
 		
 		<c:choose>
 			<c:when test="${empty login}">
