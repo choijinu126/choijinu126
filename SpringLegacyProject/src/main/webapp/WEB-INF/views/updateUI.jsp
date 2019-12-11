@@ -15,7 +15,7 @@
 <body>
 <div class="container-fluid">
 	<%@include file="mainHeader.jsp" %>
-	<h3 style="margin-left: 50px;">New member insert test</h3>
+	<h3 style="margin-left: 50px;">New member update test</h3>
 	<div class="container">
 		<form action="/update" method="post">
 			<div class="form-group">

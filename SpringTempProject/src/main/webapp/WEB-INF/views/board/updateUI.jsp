@@ -17,7 +17,7 @@
 <body>
 <div class="container-fluid">
 	<%@include file="../mainHeader.jsp" %>
-	<h3 style="margin-left: 50px;">게시글 작성 테스트 페이지</h3>
+	<h3 style="margin-left: 50px;">게시글 수정 테스트 페이지</h3>
 	<div class="container">
 		<form action="/board/update" method="post">
 			<div class="form-group">

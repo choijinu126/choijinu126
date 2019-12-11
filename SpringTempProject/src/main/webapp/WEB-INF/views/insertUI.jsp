@@ -27,7 +27,7 @@
 				<label for="id">id</label>
 				<input
 					type="text" class="form-control" id="id" name="id"
-					aria-describedby="id" placeholder="Enter id" oninput="checkId()"> <small
+					aria-describedby="id" placeholder="Enter id" oninput="checkId()" required="required"> <small
 					class="form-text text-muted">Enter your own id. We'll never share your id with anyone else.</small><br/>
 					<small id="id_check"></small>
 			</div>
@@ -40,14 +40,14 @@
 				<label for="name">name</label>
 				<input
 					type="text" class="form-control" id="name" name="name"
-					aria-describedby="name" placeholder="Enter name"> <small
+					aria-describedby="name" placeholder="Enter name" required="required"> <small
 					id="name" class="form-text text-muted">Enter your name.</small>
 			</div>
 			<div class="form-group">
 				<label for="num">number</label>
 				<input
 					type="text" class="form-control" id="num" name="num"
-					aria-describedby="num" placeholder="Enter phone number"> <small
+					aria-describedby="num" placeholder="Enter phone number" required="required"> <small
 					id="num" class="form-text text-muted">Enter your phone number without hipen(-).</small>
 			</div>
 			<input id="reg_submit" type="submit" class="btn btn-primary" value="Submit">
