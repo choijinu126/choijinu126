@@ -18,7 +18,7 @@ public class boardServiceImpl implements boardService{
 	private BoardDAO bdao;
 	
 	@Override
-	public List<boardVO> boardList(spageTO sto) {
+	public List<boardVO> boardList(spageTO<boardVO> sto) {
 		int amount = bdao.amountcall(sto);
 		sto.setAmount(amount);
 		return bdao.boardList(sto);
@@ -48,6 +48,17 @@ public class boardServiceImpl implements boardService{
 	@Override
 	public void delete(String bnum) {
 		bdao.delete(bnum);
+	}
+
+	@Override
+	public void replyInsert(boardVO vo) {
+		bdao.replyInsert(vo);
+	}
+
+	@Override
+	public List<boardVO> boardreplyList(spageTO<boardVO> rto, int bnum) {
+		rto.setAmount(bdao.replyamountcall(bnum));
+		return bdao.replyList(rto, bnum);
 	}
 	
 }

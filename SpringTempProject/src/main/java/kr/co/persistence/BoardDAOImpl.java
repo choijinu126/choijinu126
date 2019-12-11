@@ -1,6 +1,8 @@
 package kr.co.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -17,12 +19,12 @@ public class BoardDAOImpl implements BoardDAO{
 	private final String NS = "kr.co.mapper.board";
 	
 	@Override
-	public List<boardVO> boardList(spageTO sto) {
+	public List<boardVO> boardList(spageTO<boardVO> sto) {
 		return bsession.selectList(NS+".boardList", sto);
 	}
 
 	@Override
-	public int amountcall(spageTO sto) {
+	public int amountcall(spageTO<boardVO> sto) {
 		return bsession.selectOne(NS+".amountcall", sto);
 	}
 
@@ -49,6 +51,24 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void boardReadcnt(int bnum) {
 		bsession.update(NS+".boardReadcnt", bnum);
+	}
+
+	@Override
+	public void replyInsert(boardVO vo) {
+		bsession.insert(NS+".boardreplyInsert", vo);
+	}
+
+	@Override
+	public List<boardVO> replyList(spageTO<boardVO> rto, int bnum) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("rto", rto);
+		map.put("bnum", bnum);
+		return bsession.selectList(NS+".boardreplyList", map);
+	}
+
+	@Override
+	public int replyamountcall(int bnum) {
+		return bsession.selectOne(NS+".replyamountcall", bnum);
 	}
 
 }

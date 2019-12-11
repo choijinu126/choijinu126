@@ -51,4 +51,23 @@
 	<update id="boardReadcnt">
 		update board_test set readcnt=readcnt+1 where bnum=#{bnum}
 	</update>
+	
+	<insert id="boardreplyInsert">
+		insert into boardreply_test(rnum, bnum, content, writer) values( (select nvl2(max(rnum), max(rnum)+1, 1) from boardreply_test), #{bnum}, #{content}, #{writer})
+	</insert>
+	
+	<select id="boardreplyList" resultType="kr.co.domain.boardVO">
+		select * from
+			(
+				select rownum rwnum, rnum, bnum, content, writer, to_char(writedate, 'YYYY-MM-DD HH24:MI:SS') writedate from
+					(
+						select * from boardreply_test where bnum = #{bnum}
+					)
+			)
+		where rwnum between #{rto.startNum} and #{rto.endNum}
+	</select>
+	
+	<select id="replyamountcall" resultType="Integer">
+		select count(*) from boardreply_test where bnum = #{bnum}
+	</select>
 </mapper>

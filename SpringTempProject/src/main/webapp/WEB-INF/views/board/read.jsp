@@ -27,21 +27,21 @@
 					aria-describedby="title" value="${vo.title}" readonly="readonly"><br/>
 			</div>
 			
-<div class="form-group row" style="margin-bottom: 25px;">
-	<label for="writer" class="col-sm-1 col-form-label" style="margin-top: 5px;">작성자: </label>
-	<div class="col-sm-3">
-		<input type="text" class="form-control" id="writer" value="${vo.writer}" readonly="readonly">
-	</div>
-
-	<label for="readcnt" class="col-sm-1 col-form-label" style="margin-left: 10%; margin-top: 5px;">조회수: </label>
-	<div class="col-sm-3">
-		<input type="text" class="form-control" id="readcnt" value="${vo.readcnt}" readonly="readonly">
-	</div>
-</div>
+			<div class="form-group row" style="margin-bottom: 25px;">
+				<label for="writer" class="col-sm-1 col-form-label" style="margin-top: 5px;">작성자: </label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="writer" value="${vo.writer}" readonly="readonly">
+				</div>
+			
+				<label for="readcnt" class="col-sm-1 col-form-label" style="margin-left: 10%; margin-top: 5px;">조회수: </label>
+				<div class="col-sm-3">
+					<input type="text" class="form-control" id="readcnt" value="${vo.readcnt}" readonly="readonly">
+				</div>
+			</div>
 			
 			<div class="form-group">
 				<label for="content">내용</label>
-				<div id="content" style="overflow: scroll; width: 100%; height: 500px; border: 1px solid grey; border-radius: 10px; padding: 10px;">${vo.content}</div> <!-- 가로 조절하려면 cols="60"으로 고정밖에 안되는듯 -->
+				<div id="content" style="overflow: scroll; width: 100%; height: 300px; border: 1px solid grey; border-radius: 10px; padding: 10px;">${vo.content}</div> <!-- 가로 조절하려면 cols="60"으로 고정밖에 안되는듯 -->
 			</div>
 		</form>
 		
@@ -50,6 +50,54 @@
 			<a id="updatebtn" href="/board/updateUI?bnum=${vo.bnum}" class="btn btn-success" style="float: right; margin-right: 10px">update</a>
 		</c:if>
 		<a id="listbtn" href="/board/list" class="btn btn-primary" style="float: right; margin-right: 10px">list</a>
+	</div>
+	
+	<div class="container replyInsert" style="margin-top: 15px;">
+		<form action="/board/replyInsert" method="post">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="input-group">
+						<span class="input-group-addon">@ &nbsp ${login.id}</span>
+						<input type="text" class="form-control" placeholder="Reply content..." name="content">
+						<input type="hidden" name="bnum" value="${vo.bnum}">
+						<input type="hidden" name="writer" value="${login.id}">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">Reply</button>
+						</span>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	
+	<div class="container replyList" style="margin-top: 15px;">
+		<c:choose>
+			<c:when test="${not empty reply}">
+				<table class="table table-sm">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">작성자</th>
+							<th scope="col" style="width: 50%">내용</th>
+							<th scope="col" style="width: 20%">작성일</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${reply.list}" var="vo" varStatus="stat">
+							<tr>
+								<th scope="row">${stat.count}</th>
+								<td>${vo.writer}</td>
+								<td>${vo.content}</td>
+								<td>${vo.writedate}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:when>
+			<c:otherwise>
+				
+			</c:otherwise>
+		</c:choose>
 	</div>
 </div>
 </body>

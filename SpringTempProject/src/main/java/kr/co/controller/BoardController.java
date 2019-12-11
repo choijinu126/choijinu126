@@ -1,7 +1,6 @@
 package kr.co.controller;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import kr.co.domain.MemberVO;
 import kr.co.domain.boardVO;
 import kr.co.domain.spageTO;
-import kr.co.service.MemberService;
 import kr.co.service.boardService;
 import kr.co.service.loginService;
 
@@ -29,7 +27,7 @@ public class BoardController {
 	private loginService lservice;
 	
 	@RequestMapping(value = "/list")
-	public void list(Model model, spageTO sto, HttpSession session, HttpServletRequest request) {
+	public void list(Model model, spageTO<boardVO> sto, HttpSession session, HttpServletRequest request) {
 		sto.setList(bservice.boardList(sto));
 		
 		MemberVO login = (MemberVO) session.getAttribute("login");
@@ -63,9 +61,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/read")
-	public String read(boardVO vo, Model model) {
+	public String read(boardVO vo, spageTO<boardVO> rto, Model model) {
 		vo = bservice.read(vo.getBnum());
 		model.addAttribute("vo", vo);
+		
+		rto.setList(bservice.boardreplyList(rto, vo.getBnum()));
+		model.addAttribute("reply", rto);
+		
 		return "/board/read";
 	}
 	
@@ -79,7 +81,6 @@ public class BoardController {
 	@RequestMapping(value = "/update")
 	public String  update(boardVO vo) {
 		bservice.updateUI(vo);
-		System.out.println(vo.getTitle());
 		return "redirect:/board/read?bnum=" + vo.getBnum(); 
 	}
 	
@@ -88,4 +89,11 @@ public class BoardController {
 		bservice.delete(bnum);
 		return "redirect:/board/list";
 	}
+	
+	@RequestMapping(value = "/replyInsert", method = RequestMethod.POST)
+	public String replyInsert(boardVO vo) {
+		bservice.replyInsert(vo);
+		return "redirect:/board/read?bnum=" + vo.getBnum();
+	}
+	
 }

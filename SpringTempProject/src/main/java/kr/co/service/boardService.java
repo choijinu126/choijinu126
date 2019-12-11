@@ -7,7 +7,7 @@ import kr.co.domain.spageTO;
 
 public interface boardService {
 
-	List<boardVO> boardList(spageTO sto);
+	List<boardVO> boardList(spageTO<boardVO> sto);
 
 	void insert(boardVO vo);
 
@@ -18,5 +18,9 @@ public interface boardService {
 	void updateUI(boardVO vo);
 
 	void delete(String bnum);
+
+	void replyInsert(boardVO vo);
+
+	List<boardVO> boardreplyList(spageTO<boardVO> rto, int bnum);
 
 }
