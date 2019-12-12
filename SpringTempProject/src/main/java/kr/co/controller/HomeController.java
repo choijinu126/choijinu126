@@ -87,4 +87,9 @@ public class HomeController {
 		mservice.delete(id);
 		return "redirect:/main";
 	}
+	
+	@RequestMapping(value = "/test")
+	public String test() {
+		return "test";
+	}
 }

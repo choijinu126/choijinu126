@@ -13,6 +13,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
+<style type="text/css">
+.media-body {
+	display: inline;
+}
+</style>
 </head>
 <body>
 <div class="container-fluid">
@@ -77,7 +82,20 @@
 		<div class="container replyList" style="margin-top: 15px;">
 			<c:choose>
 				<c:when test="${not empty reply.list}">
-					<table class="table table-sm">
+					<c:forEach items="${reply.list}" var="vo" varStatus="stat">
+						<div class="media-body">
+							<div class="well well-lg">
+								<h4 class="text-uppercase" style="float: left;">${vo.writer}</h4>
+								<p style="float: right;">${vo.writedate}</p>
+								<div><a href="/board/replyUpdateUI?rnum=${vo.rnum}" style="margin-left: 10%; margin-top: 10px; width: 30%; word-spacing: pre-line;"
+								onclick="window.open(this.href, '팝업창', 'width=800, height=130'); return false;">${vo.content}</a></div>
+								<a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Reply</a>
+								<a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#"><span class="glyphicon glyphicon-comment"></span> 2 comments</a>
+							</div>
+						</div>
+					</c:forEach>
+					
+					<%-- <table class="table table-sm">
 						<thead>
 							<tr>
 								<th scope="col">#</th>
@@ -105,7 +123,7 @@
 								</tr>
 							</c:forEach>
 						</tbody>
-					</table>
+					</table> --%>
 					
 					<!-- paging -->
 					<div class="container row text-center" style="text-align: center;">
