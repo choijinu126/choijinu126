@@ -57,6 +57,14 @@ public class boardVO {
 		this.readcnt = readcnt;
 	}
 
+	public int getRnum() {
+		return rnum;
+	}
+
+	public void setRnum(int rnum) {
+		this.rnum = rnum;
+	}
+
 	public String getWritedate() {
 		return writedate;
 	}

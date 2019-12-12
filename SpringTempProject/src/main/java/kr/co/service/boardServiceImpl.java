@@ -60,5 +60,19 @@ public class boardServiceImpl implements boardService{
 		rto.setAmount(bdao.replyamountcall(bnum));
 		return bdao.replyList(rto, bnum);
 	}
-	
+
+	@Override
+	public boardVO replyRead(boardVO vo) {
+		return bdao.replyRead(vo);
+	}
+
+	@Override
+	public void replyUpdate(boardVO vo) {
+		bdao.replyUpdate(vo);
+	}
+
+	@Override
+	public void replyDelete(boardVO vo) {
+		bdao.replyDelete(vo);
+	}
 }

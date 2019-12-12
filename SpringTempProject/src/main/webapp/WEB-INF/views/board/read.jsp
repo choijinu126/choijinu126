@@ -72,7 +72,7 @@
 	
 	<div class="container replyList" style="margin-top: 15px;">
 		<c:choose>
-			<c:when test="${not empty reply}">
+			<c:when test="${not empty reply.list}">
 				<table class="table table-sm">
 					<thead>
 						<tr>
@@ -87,15 +87,46 @@
 							<tr>
 								<th scope="row">${stat.count}</th>
 								<td>${vo.writer}</td>
-								<td>${vo.content}</td>
+								<td>
+									<c:choose>
+										<c:when test="${vo.writer eq login.id}">
+											<a href="/board/replyUpdateUI?rnum=${vo.rnum}" onclick="window.open(this.href, '팝업창', 'width=800, height=130'); return false;">${vo.content}</a>
+										</c:when>
+										<c:otherwise>
+											${vo.content}
+										</c:otherwise>
+									</c:choose>
+								</td>
 								<td>${vo.writedate}</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				<!-- paging -->
+				<div class="container row text-center" style="text-align: center;">
+					<ul class="pagination">
+						<c:if test="${reply.curPage>1}">
+							<li>
+								<a href="/board/read?bnum=${reply.list[0].bnum}&curPage=${reply.curPage-1}&perPage=${reply.perPage}&searchType=${reply.searchType}&keyword=${reply.keyword}">&laquo;</a>
+							</li>
+						</c:if>
+						<!-- 주소창에서 perPage값을 조절하면서 확인할것 -->
+				
+						<c:forEach begin="${reply.bpn}" end="${reply.spn}" var="idx">
+							<li class="${reply.curPage == idx?'active':''}"><a
+								href="/board/read?bnum=${reply.list[0].bnum}&curPage=${idx}&perPage=${reply.perPage}&searchType=${repky.searchType}&keyword=${reply.keyword}">${idx}</a></li>
+							<!-- li에 클래스를 active로 주면 현재 페이지에 색이 들어간다 -->
+						</c:forEach>
+				
+						<c:if test="${reply.curPage<reply.totalPage}">
+							<li><a
+								href="/board/read?bnum=${reply.list[0].bnum}&curPage=${reply.curPage+1}&perPage=${reply.perPage}&searchType=${reply.searchType}&keyword=${reply.keyword}">&raquo;</a></li>
+						</c:if>
+					</ul>
+				</div>
 			</c:when>
 			<c:otherwise>
-				
 			</c:otherwise>
 		</c:choose>
 	</div>

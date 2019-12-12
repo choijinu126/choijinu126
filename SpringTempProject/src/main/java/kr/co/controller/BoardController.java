@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.domain.MemberVO;
 import kr.co.domain.boardVO;
@@ -45,7 +46,6 @@ public class BoardController {
 				}
 			}
 		}
-		
 		model.addAttribute("vo", sto);
 		model.addAttribute("login", login);
 	}
@@ -96,4 +96,23 @@ public class BoardController {
 		return "redirect:/board/read?bnum=" + vo.getBnum();
 	}
 	
+	@RequestMapping(value = "/replyUpdateUI")
+	public void replyUpdateUI(boardVO vo, Model model) {
+		vo = bservice.replyRead(vo);
+		model.addAttribute("vo", vo);
+	}
+	
+	@RequestMapping(value = "/replyUpdate", method = RequestMethod.POST)
+	@ResponseBody
+	public String replyUpdate(boardVO vo) {
+		bservice.replyUpdate(vo);
+		return "success";
+	}
+	
+	@RequestMapping(value = "/replyDelete")
+	@ResponseBody
+	public String replyDelete(boardVO vo) {
+		bservice.replyDelete(vo);
+		return "success";
+	}
 }

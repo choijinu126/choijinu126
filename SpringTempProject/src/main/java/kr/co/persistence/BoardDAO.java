@@ -26,4 +26,10 @@ public interface BoardDAO {
 	List<boardVO> replyList(spageTO<boardVO> rto, int bnum);
 
 	int replyamountcall(int bnum);
+
+	boardVO replyRead(boardVO vo);
+
+	void replyUpdate(boardVO vo);
+
+	void replyDelete(boardVO vo);
 }

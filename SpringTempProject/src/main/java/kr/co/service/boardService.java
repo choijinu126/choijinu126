@@ -23,4 +23,10 @@ public interface boardService {
 
 	List<boardVO> boardreplyList(spageTO<boardVO> rto, int bnum);
 
+	boardVO replyRead(boardVO vo);
+
+	void replyUpdate(boardVO vo);
+
+	void replyDelete(boardVO vo);
+
 }

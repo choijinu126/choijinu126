@@ -61,7 +61,7 @@
 			(
 				select rownum rwnum, rnum, bnum, content, writer, to_char(writedate, 'YYYY-MM-DD HH24:MI:SS') writedate from
 					(
-						select * from boardreply_test where bnum = #{bnum}
+						select * from boardreply_test where bnum = #{bnum} order by rnum desc
 					)
 			)
 		where rwnum between #{rto.startNum} and #{rto.endNum}
@@ -70,4 +70,16 @@
 	<select id="replyamountcall" resultType="Integer">
 		select count(*) from boardreply_test where bnum = #{bnum}
 	</select>
+	
+	<select id="replyRead" resultType="kr.co.domain.boardVO">
+		select * from boardreply_test where rnum=#{rnum}
+	</select>
+	
+	<update id="replyUpdate">
+		update boardreply_test set content=#{content},writedate=sysdate where rnum=#{rnum}
+	</update>
+	
+	<delete id="replyDelete">
+		delete from boardreply_test where rnum=#{rnum}
+	</delete>
 </mapper>

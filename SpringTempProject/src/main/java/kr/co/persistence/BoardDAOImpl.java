@@ -71,4 +71,19 @@ public class BoardDAOImpl implements BoardDAO{
 		return bsession.selectOne(NS+".replyamountcall", bnum);
 	}
 
+	@Override
+	public boardVO replyRead(boardVO vo) {
+		return bsession.selectOne(NS+".replyRead", vo);
+	}
+
+	@Override
+	public void replyUpdate(boardVO vo) {
+		bsession.update(NS+".replyUpdate", vo);
+	}
+
+	@Override
+	public void replyDelete(boardVO vo) {
+		bsession.delete(NS+".replyDelete", vo);
+	}
+
 }
