@@ -62,7 +62,7 @@
 						<input type="hidden" name="bnum" value="${vo.bnum}">
 						<input type="hidden" name="writer" value="${login.id}">
 						<span class="input-group-btn">
-							<button class="btn btn-default" type="submit">Reply</button>
+							<button class="btn btn-default" type="submit" onclick="alert('등록되었습니다.')">Reply</button>
 						</span>
 					</div>
 				</div>
