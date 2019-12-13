@@ -85,12 +85,12 @@
 					<c:forEach items="${reply.list}" var="vo" varStatus="stat">
 						<div class="media-body">
 							<div class="well well-lg">
-								<h4 class="text-uppercase" style="float: left;">${vo.writer}</h4>
-								<p style="float: right;">${vo.writedate}</p>
-								<div><a href="/board/replyUpdateUI?rnum=${vo.rnum}" style="margin-left: 10%; margin-top: 10px; width: 30%; word-spacing: pre-line;"
-								onclick="window.open(this.href, '팝업창', 'width=800, height=130'); return false;">${vo.content}</a></div>
-								<a class="btn btn-info btn-circle text-uppercase" href="#" id="reply"><span class="glyphicon glyphicon-share-alt"></span>Reply</a>
-								<a class="btn btn-warning btn-circle text-uppercase" data-toggle="collapse" href="#"><span class="glyphicon glyphicon-comment"></span> 2 comments</a>
+								<h4 class="text-uppercase" style="float: left; display: inline-block;">${vo.writer}</h4>
+								<p style="float: right; display: inline-block; margin-top: -10px;">${vo.writedate}<br/>
+								<a href="/board/replyUpdateUI?rnum=${vo.rnum}" class="btn btn-info" style="float: right; display: inline-block; margin-top: 5px; margin-left: 5px;" 
+								onclick="window.open(this.href, '팝업창', 'width=800, height=130'); return false;">수정/삭제</a>
+								</p>
+								<p style="display: inline-block;width: 80%;margin-left: 20px;margin-top: 10px; word-break: break-all;">${vo.content}</p>
 							</div>
 						</div>
 					</c:forEach>
