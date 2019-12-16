@@ -51,7 +51,7 @@
 		</form>
 		
 		<c:if test="${login.id eq vo.writer}">
-			<a id="deletebtn" href="/board/delete?bnum=${vo.bnum}" class="btn btn-danger" style="float: right;" onclick="confirm('삭제하시겠습니까?')">delete</a>
+			<a id="deletebtn" href="/board/delete?bnum=${vo.bnum}" class="btn btn-danger" style="float: right;" onclick="return Confirm('삭제하시겠습니까?');">delete</a>
 			<a id="updatebtn" href="/board/updateUI?bnum=${vo.bnum}" class="btn btn-success" style="float: right; margin-right: 10px">update</a>
 		</c:if>
 		<a id="listbtn" href="/board/list" class="btn btn-primary" style="float: right; margin-right: 10px">list</a>
@@ -154,5 +154,16 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function Confirm(msg) {
+		var result = confirm(msg);
+		if(result){
+			$(this).parent().click()
+		}else{
+			return false;
+		}
+	}
+</script>
 </body>
 </html>

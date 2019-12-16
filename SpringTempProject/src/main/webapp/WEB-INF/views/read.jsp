@@ -35,10 +35,21 @@
 					type="text" class="form-control" id="num" name="num"
 					value="${vo.num}">
 			</div>
-			<a id="deletebtn" href="/delete?id=${vo.id}" class="btn btn-danger" style="float: right;">delete</a>
+			<a id="deletebtn" href="/delete?id=${vo.id}" class="btn btn-danger" style="float: right;" onclick="return Confirm('삭제하시겠습니까?');">delete</a>
 			<a id="updatebtn" href="/updateUI?id=${vo.id}" class="btn btn-success" style="float: right; margin-right: 10px">update</a>
 			<a id="listbtn" href="/main" class="btn btn-primary" style="float: right; margin-right: 10px">list</a>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function Confirm(msg) {
+		var result = confirm(msg);
+		if(result){
+			$(this).parent().click()
+		}else{
+			return false;
+		}
+	}
+</script>
 </body>
 </html>
