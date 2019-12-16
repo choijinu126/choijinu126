@@ -14,6 +14,7 @@
 			</c:when>
 			<c:otherwise>
 				<a href="/logout" class="btn btn-info" style="float: right;">Logout</a>
+				<p style="float: right; position: relative; top: 8px;">안녕하세요, ${login.name}님! &nbsp&nbsp&nbsp</p>
 			</c:otherwise>
 		</c:choose>
 	</div>
