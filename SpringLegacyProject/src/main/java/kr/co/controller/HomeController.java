@@ -18,6 +18,7 @@ import kr.co.domain.MemberVO;
 import kr.co.domain.spageTO;
 import kr.co.service.MemberService;
 import kr.co.service.loginService;
+import kr.co.service.testService;
 
 @Controller
 public class HomeController {
@@ -25,10 +26,14 @@ public class HomeController {
 	private MemberService mservice;
 	@Inject
 	private loginService lservice;
+	@Inject
+	private testService tservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		return "redirect:/main";
+	public String home(Model model) {
+		List<MemberVO> mDTO = tservice.mSelect();
+		model.addAttribute("mdto", mDTO);
+		return "home";
 	}
 	
 	@RequestMapping(value = "/main", method = RequestMethod.GET)

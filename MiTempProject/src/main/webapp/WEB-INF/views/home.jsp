@@ -5,18 +5,10 @@
 	<title>Home</title>
 </head>
 <body>
-<h3>
-	jwchoi test home page.  
-</h3>
+<h1>
+	Hello world!  
+</h1>
 
-<P>Please click the follow link.</P>
-<br/>
-
-<hr/>
-<p>${mdto}</p>
-
-<hr/>
-<a href="/main">link</a>
-
+<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
