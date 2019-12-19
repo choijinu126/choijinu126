@@ -7,4 +7,4 @@ oracle + Mybatis + Spring + tomcat template project
 2. SpringBootProject: 스프링 부트 기반 간단한 프로젝트
 3. SpringTempProject: mvc2 기반 네이버 smartEditor2 적용된 게시판 + 로그인 프로젝트
 
-4. MiTempProject: Mapper Interface 프로젝트. https://baby.namyangi.com/ 기반으로 비슷하게 만들어보기 시작
+4. SpringLegacyMini: Mapper Interface 최소한의 설정만 된 프로젝트
