@@ -15,8 +15,8 @@ public class HomeController {
 	private testService tservice;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
-		return "test";
+	public String gateway() {
+		return "gateway";
 	}
 	
 	@RequestMapping(value = "/selection")

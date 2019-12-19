@@ -14,7 +14,7 @@
 </head>
 <body>
 <h3>
-	jwchoi test home page.  
+	jwchoi test gateway page.  
 </h3>
 
 <P>Please click the follow link.</P>
