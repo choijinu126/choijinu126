@@ -22,7 +22,6 @@ public class HomeController {
 	@RequestMapping(value = "/selection")
 	public String selection(Model model) {
 		String temp = tservice.selection();
-		System.out.println(temp);
 		model.addAttribute("temp", temp);
 		return "selection";
 	}
